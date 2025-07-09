@@ -1,0 +1,152 @@
+<div class="container mt-5">
+  <div class="row g-4">
+    @if(userService.loggedUserId == "1"){
+    <div class="col-md-7">
+      <div class="card shadow-sm">
+        <div class="card-header bgColor text-white">
+          <strong>Competitions List</strong>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="competitionTableBody">
+              <tr *ngFor="let item of gridList; let i = index">
+                <td>{{item.competitionId}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.startDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{item.endDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{item.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    } @else{
+    <div class="col-md-12">
+      <div class="card shadow-sm">
+        <div class="card-header bgColor text-white">
+          <strong style="font-size: 30px">Competitions List</strong>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead class="table-light">
+              <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Title</th>
+                <th class="text-center">Start</th>
+                <th class="text-center">End</th>
+                <th class="text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody id="competitionTableBody">
+              @for(item of gridList; track $index){
+              <tr>
+                <td style="text-align: right">{{item.competitionId}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.startDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{item.endDate | date:'dd-MM-yyyy'}}</td>
+                <td
+                  [ngStyle]="{ color: item.status === 'upcoming' ? 'Orange' : 'Green' }"
+                >
+                  {{ item.status }}
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    } @if(userService.loggedUserId == "1"){
+    <div class="col-md-5">
+      <div class="card shadow-sm">
+        <div class="card-header bgColor text-white">
+          <strong>Add / Edit Competition</strong>
+        </div>
+        <div class="card-body">
+          <form
+            novalidate=""
+            id="competitionForm"
+            class="ng-invalid ng-dirty ng-touched"
+          >
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label
+              ><input
+                type="text"
+                [(ngModel)]="competitionObj.title"
+                name="title"
+                id="title"
+                required=""
+                class="form-control ng-dirty ng-valid ng-touched"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label
+              ><textarea
+                [(ngModel)]="competitionObj.description"
+                name="description"
+                id="description"
+                rows="2"
+                class="form-control ng-valid ng-dirty ng-touched"
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="startDate" class="form-label">Start Date</label
+              ><input
+                type="date"
+                [(ngModel)]="competitionObj.startDate"
+                name="startDate"
+                id="startDate"
+                required=""
+                class="form-control ng-pristine ng-invalid ng-touched"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="endDate" class="form-label">End Date</label
+              ><input
+                type="date"
+                [(ngModel)]="competitionObj.endDate"
+                name="endDate"
+                id="endDate"
+                required=""
+                class="form-control ng-untouched ng-pristine ng-invalid"
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                for="status"
+                name="status"
+                class="form-label ng-untouched ng-pristine ng-valid"
+                >Status</label
+              ><select
+                id="status"
+                [(ngModel)]="competitionObj.status"
+                class="form-select"
+              >
+                <option value="Upcoming">Upcoming</option>
+                <option value="Ongoing">Ongoing</option>
+              </select>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="button" (click)="onSave()" class="btn btnColor">
+                Save</button
+              ><button type="reset" class="btn btn-outline-secondary btnDelete">
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

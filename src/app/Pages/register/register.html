@@ -1,0 +1,108 @@
+<div class="container auth-container">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card auth-card shadow-lg">
+        <div class="card-body p-5">
+          <div class="text-center mb-4">
+            <i class="fa fa-user-plus fa-4x text-color"></i>
+            <h2 class="mt-3 mb-1">Create Your Account</h2>
+            <p class="text-muted">
+              Join GiantTechie to participate in exciting competitions
+            </p>
+          </div>
+          <form
+            novalidate=""
+            id="registrationForm"
+            class="ng-untouched ng-pristine ng-invalid"
+          >
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">Full Name</label>
+                <div class="input-group">
+                  <span class="input-group-text"
+                    ><i class="fa fa-user text-color"></i></span
+                  ><input
+                    type="text"
+                    [(ngModel)]="registerObj.fullName"
+                    name="fullName"
+                    id="firstName"
+                    placeholder="Enter your full name"
+                    required=""
+                    class="form-control ng-untouched ng-pristine ng-invalid"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">College Name</label>
+                <div class="input-group">
+                  <span class="input-group-text"
+                    ><i class="fa fa-user text-color"></i></span
+                  ><input
+                    type="text"
+                    [(ngModel)]="registerObj.collegeName"
+                    name="collegeName"
+                    id="s"
+                    placeholder="Enter your college name"
+                    required=""
+                    class="form-control ng-untouched ng-pristine ng-invalid"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text"
+                  ><i class="fa fa-envelope text-color"></i></span
+                ><input
+                  type="email"
+                  [(ngModel)]="registerObj.email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  required=""
+                  class="form-control ng-untouched ng-pristine ng-invalid"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text"
+                    ><i class="fa fa-lock text-color"></i></span
+                  ><input
+                    type="password"
+                    [(ngModel)]="registerObj.password"
+                    name="password"
+                    id="password"
+                    placeholder="Create a password"
+                    required=""
+                    class="form-control ng-untouched ng-pristine ng-invalid"
+                  />
+                </div>
+                <div class="form-text">
+                  Password must be at least 8 characters with letters and
+                  numbers
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              (click)="onRegister()"
+              class="btn btnColor btn-outline-dark w-100 py-2 mb-4"
+            >
+              <i class="fa fa-user-plus me-2"></i> Create Account
+            </button>
+            <div class="text-center">
+              <p class="mb-0">
+                Already have an account?
+                <a [routerLink]="['/login']" class="text-color">Sign In</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
