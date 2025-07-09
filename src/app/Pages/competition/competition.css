@@ -1,0 +1,25 @@
+.bgColor {
+  background-color: dimgray;
+  height: 60px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.btnColor {
+  background-color: #4e1325;
+  color: white;
+}
+
+.btnDelete:hover {
+  background-color: rgb(39, 174, 183);
+  color: white;
+}
+
+.btnEdit:hover {
+  background-color: rgb(133, 143, 28);
+  color: white;
+}
+
+.text-center {
+  text-align: center;
+}

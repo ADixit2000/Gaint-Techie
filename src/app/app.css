@@ -1,0 +1,17 @@
+.navbar {
+  background-color: black;
+  height: 76px;
+}
+
+.nav-link {
+  font-size: 20px;
+}
+
+.btnColor:hover {
+  background-color: #4e1325;
+  color: white;
+}
+
+.drpMargin {
+  margin-left: 7px;
+}
