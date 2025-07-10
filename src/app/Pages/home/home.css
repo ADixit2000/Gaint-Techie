@@ -1,0 +1,25 @@
+.hero-section {
+  background-color: dimgray;
+  height: 30em;
+  background-image: url("../../../assets/img/giantTechie.png");
+  background-repeat: no-repeat;
+  background-size: 1500px 800px;
+  background-blend-mode: overlay;
+}
+
+.badgeColor,
+.btnColor:hover {
+  background-color: #4e1325;
+  color: white;
+}
+
+.text-color {
+  color: #4e1325;
+}
+
+.cta-section {
+  background-color: black;
+}
+.owl-carousel .competition-card {
+  height: 100%;
+}

@@ -1,0 +1,368 @@
+<header class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="row h-100 align-items-center">
+      <div class="col-md-8 hero-text">
+        <h1 class="display-4 fw-bold text-white mb-4">
+          Innovation Starts with a Click.
+        </h1>
+        <p class="lead text-white mb-4">
+          Join the most prestigious inter-college project competition and
+          demonstrate your creative solutions to real-world problems.
+        </p>
+        <div class="hero-buttons">
+          <a href="#featured" class="btn btnColor btn-light btn-lg me-3"
+            ><i class="fa fa-trophy"></i> Browse Competitions </a
+          ><a
+            [routerLink]="['/register']"
+            class="btn btnColor btn-outline-light btn-lg"
+            ><i class="fa fa-user-plus"></i> Join Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="featured" class="featured-competitions py-5">
+  <div class="container">
+    <div class="section-heading text-center mb-5">
+      <h2 class="fw-bold">Featured Competitions</h2>
+      <p class="text-muted">
+        Participate in our ongoing competitions and showcase your talent
+      </p>
+    </div>
+    <!-- <div class="row">
+      @for(item of competitionList$ | async; track $index){
+      <div class="col-md-4 mb-4">
+        <div class="card competition-card h-100">
+          <div class="badge bg-danger position-absolute top-0 end-0 m-3">
+            {{item.title}}
+          </div>
+          <div class="card-body">
+            <p class="card-text pt-4">{{item.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge badgeColor"
+                ><i class="fa fa-calendar"></i> Ends:{{item.endDate | date:
+                'dd-MMM-yy'}}</span
+              >
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <a
+              class="btn btn-outline-dark btnColor btnColor w-100"
+              [routerLink]="['/submitProject', item.competitionId]"
+              >View Details for Apply</a
+            >
+          </div>
+        </div>
+      </div>
+      }
+    </div> -->
+    <owl-carousel-o [options]="carouselOptions">
+      <ng-container *ngIf="competitionList$ | async as competitionList">
+        <ng-template
+          carouselSlide
+          *ngFor="let item of competitionList; trackBy: trackByIndex"
+        >
+          <div class="card competition-card h-100 mx-2">
+            <div class="badge bg-danger position-absolute top-0 end-0 m-3">
+              {{ item.title }}
+            </div>
+            <div class="card-body">
+              <p class="card-text pt-4">{{ item.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge badgeColor">
+                  <i class="fa fa-calendar"></i> Ends: {{ item.endDate | date:
+                  'dd-MMM-yy' }}
+                </span>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent">
+              <a
+                class="btn btn-outline-dark btnColor btnColor w-100"
+                [routerLink]="['/submitProject', item.competitionId]"
+              >
+                View Details for Apply
+              </a>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+
+    <div class="text-center mt-4">
+      <a
+        [routerLink]="['/competition']"
+        class="btn btn-outline-dark btnColor btn-lg"
+        ><i class="fa fa-list"></i> View All Competitions
+      </a>
+    </div>
+  </div>
+</section>
+<section class="how-it-works py-5 bg-light">
+  <div class="container">
+    <div class="section-heading text-center mb-5">
+      <h2 class="fw-bold">How It Works</h2>
+      <p class="text-muted">
+        Follow these simple steps to participate in our competitions
+      </p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <div class="step-icon mb-3">
+              <i class="fa fa-user-plus fa-3x text-color"></i>
+            </div>
+            <h5 class="card-title">1. Register</h5>
+            <p class="card-text">
+              Create an account and complete your profile with your college
+              information.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <div class="step-icon mb-3">
+              <i class="fa fa-trophy fa-3x text-color"></i>
+            </div>
+            <h5 class="card-title">2. Join Competition</h5>
+            <p class="card-text">
+              Browse available competitions and register for those that match
+              your interests.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <div class="step-icon mb-3">
+              <i class="fa fa-upload fa-3x text-color"></i>
+            </div>
+            <h5 class="card-title">3. Submit Project</h5>
+            <p class="card-text">
+              Work on your project and submit it before the deadline with all
+              required materials.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <div class="step-icon mb-3">
+              <i class="fa fa-trophy fa-3x text-color"></i>
+            </div>
+            <h5 class="card-title">4. Win Prizes</h5>
+            <p class="card-text">
+              Get your projects evaluated by experts and win recognition and
+              exciting prizes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="pastWinners" class="past-winners py-5">
+  <div class="container">
+    <div class="section-heading text-center mb-5">
+      <h2 class="fw-bold">Past Winners</h2>
+      <p class="text-muted">
+        Check out our previous competition winners and their amazing projects
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card winner-card h-100">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="https://images.pexels.com/photos/3153198/pexels-photo-3153198.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                alt="Project Image"
+                class="img-fluid rounded-start h-100 object-fit-cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Smart Health Monitoring System</h5>
+                <p class="card-text">
+                  An IoT-based health monitoring system that helps track vital
+                  signs and sends alerts to caregivers.
+                </p>
+                <div class="mb-2">
+                  <span class="badge badgeColor">IoT</span
+                  ><span class="badge badgeColor">Healthcare</span
+                  ><span class="badge badgeColor">Embedded Systems</span>
+                </div>
+                <p class="card-text">
+                  <small class="text-muted"
+                    >By Team Innovators from Stanford University</small
+                  >
+                </p>
+                <span class="badge bg-warning text-dark"
+                  >1st Place - Winter 2025</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card winner-card h-100">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                alt="Project Image"
+                class="img-fluid rounded-start h-100 object-fit-cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">EcoTrack - Environmental Monitoring</h5>
+                <p class="card-text">
+                  A comprehensive solution for tracking and analyzing
+                  environmental data to promote sustainability.
+                </p>
+                <div class="mb-2">
+                  <span class="badge badgeColor">Environmental</span
+                  ><span class="badge badgeColor">Data Science</span
+                  ><span class="badge badgeColor">Mobile App</span>
+                </div>
+                <p class="card-text">
+                  <small class="text-muted">By Team GreenTech from MIT</small>
+                </p>
+                <span class="badge bg-warning text-dark"
+                  >1st Place - Summer 2025</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="testimonials py-5 bg-light">
+  <div class="container">
+    <div class="section-heading text-center mb-5">
+      <h2 class="fw-bold">What Participants Say</h2>
+      <p class="text-muted">
+        Hear from our past participants about their experience
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card testimonial-card h-100">
+          <div class="card-body">
+            <div class="testimonial-quote mb-3">
+              <i class="fa fa-quote-left fa-2x text-color opacity-50"></i>
+            </div>
+            <p class="card-text">
+              Participating in TechNova's AI competition was a game-changer for
+              me. The feedback from industry experts helped me refine my skills
+              and opened doors to amazing opportunities.
+            </p>
+            <div class="d-flex align-items-center mt-4">
+              <img
+                src="https://images.pexels.com/photos/1462630/pexels-photo-1462630.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                width="50"
+                height="50"
+                alt="Testimonial"
+                class="rounded-circle me-3"
+              />
+              <div>
+                <h6 class="mb-0 fw-bold">Ankit Dixit</h6>
+                <small class="text-muted">Computer Science, Gwalior</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card testimonial-card h-100">
+          <div class="card-body">
+            <div class="testimonial-quote mb-3">
+              <i class="fa fa-quote-left fa-2x text-color opacity-50"></i>
+            </div>
+            <p class="card-text">
+              The competition platform was easy to use and the organizers were
+              incredibly supportive throughout the process. I learned so much
+              from collaborating with my teammates on our project.
+            </p>
+            <div class="d-flex align-items-center mt-4">
+              <img
+                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                width="50"
+                height="50"
+                alt="Testimonial"
+                class="rounded-circle me-3"
+              />
+              <div>
+                <h6 class="mb-0 fw-bold">Vishal Sinha</h6>
+                <small class="text-muted">Electrical Engineering, Kanpur</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card testimonial-card h-100">
+          <div class="card-body">
+            <div class="testimonial-quote mb-3">
+              <i class="fa fa-quote-left fa-2x text-color opacity-50"></i>
+            </div>
+            <p class="card-text">
+              Winning the Web Development Hackathon gave our team incredible
+              exposure. We've since turned our project into a startup and
+              secured funding thanks to the connections we made!
+            </p>
+            <div class="d-flex align-items-center mt-4">
+              <img
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                width="50"
+                height="50"
+                alt="Testimonial"
+                class="rounded-circle me-3"
+              />
+              <div>
+                <h6 class="mb-0 fw-bold">Nikhil Kumar</h6>
+                <small class="text-muted">Computer Engineering, Noida</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8 mb-4 mb-lg-0">
+        <h2 class="text-white fw-bold mb-3">
+          Ready to Showcase Your Innovation?
+        </h2>
+        <p class="text-white-50 mb-0"></p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a [routerLink]="['/login']" class="btn btn-light btnColor btn-lg"
+          ><i class="fa fa-rocket"></i> Get Started Now
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col text-end me-4">
+    <hr class="border-light opacity-25" />
+    <p class="text-white-50 small mb-0">
+      &copy; 2025 by <strong class="text-white">Ankit Dixit</strong>. All rights
+      reserved.
+    </p>
+  </div>
+</section>

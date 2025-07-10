@@ -1,0 +1,13 @@
+.justify-content-center {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btnColor:hover {
+  background-color: #4e1325;
+  color: white;
+}
+
+.text-color {
+  color: #4e1325;
+}
