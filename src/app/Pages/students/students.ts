@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-students',
   imports: [],
   templateUrl: './students.html',
-  styleUrl: './students.css'
+  styleUrl: './students.css',
 })
-export class Students {
-
-}
+export class Students {}

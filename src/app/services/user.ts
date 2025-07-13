@@ -16,7 +16,7 @@ export class User {
 
       this.loggedUserId = user.id;
 
-      this.loggedUserName = user.name;
+      this.loggedUserName = user.email;
     }
   }
 
@@ -25,10 +25,15 @@ export class User {
     obj.password = obj.password.trim();
     return this.http.get(
       Constant.API_Url +
-        '/studentRegistration?email=' +
+        '/User/login?email=' +
         obj.email +
         '&password=' +
         obj.password
     );
+  }
+  OnUserRegister(registerObj: any) {
+    registerObj.email = registerObj.email.trim();
+    registerObj.password = registerObj.password.trim();
+    return this.http.post(Constant.API_Url + '/User/Create', registerObj);
   }
 }

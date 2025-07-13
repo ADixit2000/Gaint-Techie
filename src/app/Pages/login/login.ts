@@ -21,22 +21,20 @@ export class Login {
   router = inject(Router);
 
   onLogin() {
+    debugger;
     // const value = this.loginObj.formValue;
     this.userService.onUserLogin(this.loginObj).subscribe({
       next: (res: any) => {
-        if (res.length > 0) {
-          localStorage.setItem(
-            'user',
-            JSON.stringify({ id: res[0].id, name: res[0].fullName })
-          );
-          this.userService.loggedUserId = res[0].id;
-          debugger;
-          if (this.userService.loggedUserId == '1') {
-            this.router.navigateByUrl('/competition');
-          } else {
-            this.router.navigateByUrl('/home');
-          }
+        console.log(res);
+        localStorage.setItem(
+          'user',
+          JSON.stringify({ id: res.id, name: res.fullName, email: res.email })
+        );
+        this.userService.loggedUserId = res.id;
+        if (this.userService.loggedUserId == '1') {
+          this.router.navigateByUrl('/competition');
         } else {
+          this.router.navigateByUrl('/home');
         }
       },
       error: () => {

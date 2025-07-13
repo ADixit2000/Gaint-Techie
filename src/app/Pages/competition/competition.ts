@@ -31,8 +31,8 @@ export class Competition implements OnInit {
   userService = inject(User);
 
   autoIdGenerator() {
-    this.competitionObj.competitionId++;
-    return this.competitionObj.competitionId;
+    this.competitionObj.id++;
+    return this.competitionObj.id;
   }
 
   getData() {
@@ -50,10 +50,15 @@ export class Competition implements OnInit {
   }
 
   onSave() {
-    if (this.competitionObj != null) {
-      this.autoIdGenerator();
+    const competitionToSend = {
+      ...this.competitionObj,
+      startDate: new Date(this.competitionObj.startDate).toISOString(),
+      endDate: new Date(this.competitionObj.endDate).toISOString(),
+    };
+    if (competitionToSend.startDate < competitionToSend.endDate) {
+      alert('start date can not be before End Date');
     }
-    this.competitionService.createCompetition(this.competitionObj).subscribe({
+    this.competitionService.createCompetition(competitionToSend).subscribe({
       next: (res: any) => {
         alert('save Data');
         this.getData();

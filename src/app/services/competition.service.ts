@@ -10,19 +10,22 @@ import { Observable } from 'rxjs';
 export class CompetitionService {
   constructor(private http: HttpClient) {}
 
-  createCompetition(competitionObj: CompetitionModel) {
-    return this.http.post(Constant.API_Url + '/competitionAPI', competitionObj);
+  createCompetition(competitionObj: any) {
+    return this.http.post(
+      Constant.API_Url + '/Competition/Create',
+      competitionObj
+    );
   }
 
   getCompetition(): Observable<CompetitionModel[]> {
     return this.http.get<CompetitionModel[]>(
-      Constant.API_Url + '/competitionAPI'
+      Constant.API_Url + '/Competition/GetAll'
     );
   }
 
   getCompetitionById(id: number): Observable<CompetitionModel> {
     return this.http.get<CompetitionModel>(
-      Constant.API_Url + '/competitionAPI?' + 'competitionId=' + id
+      Constant.API_Url + '/Competition/GetById?' + 'id=' + id
     );
   }
 

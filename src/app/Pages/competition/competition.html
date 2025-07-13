@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row g-4">
-    @if(userService.loggedUserId == "1"){
+    @if(userService.loggedUserName == "admin@gmail.com"){
     <div class="col-md-7">
       <div class="card shadow-sm">
         <div class="card-header bgColor text-white">
@@ -19,7 +19,7 @@
             </thead>
             <tbody id="competitionTableBody">
               <tr *ngFor="let item of gridList; let i = index">
-                <td>{{item.competitionId}}</td>
+                <td>{{i + 1}}</td>
                 <td>{{item.title}}</td>
                 <td>{{item.startDate | date:'dd-MM-yyyy'}}</td>
                 <td>{{item.endDate | date:'dd-MM-yyyy'}}</td>
@@ -50,7 +50,7 @@
             <tbody id="competitionTableBody">
               @for(item of gridList; track $index){
               <tr>
-                <td style="text-align: right">{{item.competitionId}}</td>
+                <td style="text-align: right">{{$index + 1}}</td>
                 <td>{{item.title}}</td>
                 <td>{{item.startDate | date:'dd-MM-yyyy'}}</td>
                 <td>{{item.endDate | date:'dd-MM-yyyy'}}</td>
@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-    } @if(userService.loggedUserId == "1"){
+    } @if(userService.loggedUserName == "admin@gmail.com"){
     <div class="col-md-5">
       <div class="card shadow-sm">
         <div class="card-header bgColor text-white">
@@ -83,6 +83,7 @@
               ><input
                 type="text"
                 [(ngModel)]="competitionObj.title"
+                [ngModelOptions]="{ standalone: true }"
                 name="title"
                 id="title"
                 required=""
@@ -93,6 +94,7 @@
               <label for="description" class="form-label">Description</label
               ><textarea
                 [(ngModel)]="competitionObj.description"
+                [ngModelOptions]="{ standalone: true }"
                 name="description"
                 id="description"
                 rows="2"
@@ -104,6 +106,7 @@
               ><input
                 type="date"
                 [(ngModel)]="competitionObj.startDate"
+                [ngModelOptions]="{ standalone: true }"
                 name="startDate"
                 id="startDate"
                 required=""
@@ -115,6 +118,7 @@
               ><input
                 type="date"
                 [(ngModel)]="competitionObj.endDate"
+                [ngModelOptions]="{ standalone: true }"
                 name="endDate"
                 id="endDate"
                 required=""
@@ -130,6 +134,7 @@
               ><select
                 id="status"
                 [(ngModel)]="competitionObj.status"
+                [ngModelOptions]="{ standalone: true }"
                 class="form-select"
               >
                 <option value="Upcoming">Upcoming</option>

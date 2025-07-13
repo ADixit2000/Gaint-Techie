@@ -12,7 +12,7 @@ import { User } from '../../services/user';
   styleUrl: './submit-project.css',
 })
 export class SubmitProject {
-  currentCompetitionId: number = 0;
+  currentid: number = 0;
   src = inject(CompetitionService);
   userService = inject(User);
   competitionData: CompetitionModel = new CompetitionModel();
@@ -20,13 +20,13 @@ export class SubmitProject {
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe((result: any) => {
-      this.currentCompetitionId = result.id;
+      this.currentid = result.id;
       this.getDataById();
     });
   }
 
   getDataById() {
-    this.src.getCompetitionById(this.currentCompetitionId).subscribe({
+    this.src.getCompetitionById(this.currentid).subscribe({
       next: (result: any) => {
         if (result) {
           debugger;
@@ -41,14 +41,10 @@ export class SubmitProject {
 
   onSave() {
     this.projectObj.userId = Number(this.userService.loggedUserId);
-    this.projectObj.competitionId = this.currentCompetitionId;
+    this.projectObj.id = this.currentid;
     this.src.submitProject(this.projectObj).subscribe({
-      next:()=>{
-
-      },
-      error:()=>{
-        
-      }
-    })
+      next: () => {},
+      error: () => {},
+    });
   }
 }

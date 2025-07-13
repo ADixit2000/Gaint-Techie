@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { User } from '../../services/user';
 
 @Component({
   selector: 'app-register',
@@ -11,27 +12,23 @@ import { RouterLink } from '@angular/router';
 })
 export class Register {
   registerObj: any = {
-    id: 0,
     fullName: '',
     email: '',
     collegeName: '',
     password: '',
-    role: 'Student',
   };
 
+  userService = inject(User);
   http = inject(HttpClient);
 
-  autoIdGenerator() {
-    this.registerObj.id++;
-    return this.registerObj.id;
-  }
+  // autoIdGenerator() {
+  //   this.registerObj.id++;
+  //   return this.registerObj.id;
+  // }
 
   onRegister() {
-    if (this.registerObj != null) {
-      this.autoIdGenerator();
-    }
-    this.http
-      .post('http://localhost:3000/studentRegistration', this.registerObj)
-      .subscribe((res: any) => {});
+    this.userService.OnUserRegister(this.registerObj).subscribe((res: any) => {
+      alert('User Successfully Registered');
+    });
   }
 }
